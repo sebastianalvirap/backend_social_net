@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { testFollow } from "../controllers/follow.js";
+import { testFollow, saveFollow } from "../controllers/follow.js";
+import { ensureAuth } from "../middlewares/auth.js";
 
 const router = Router();
 
-// Definir rutas de follow
-router.get('/test-follow', testFollow);
-
-//Exportar el router
+// Definir rutas de follows
+router.get('/test-follow', testFollow );
+router.post('/follow', ensureAuth, saveFollow);
+//Exportar el Router
 export default router;
